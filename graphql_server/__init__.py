@@ -187,9 +187,12 @@ def execute_graphql_request(
             )
 
     try:
-        return document.execute(
+        print('begin')
+        value = document.execute(
             operation_name=params.operation_name, variables=params.variables, **kwargs
         )
+        print('after')
+        return value
     except Exception as e:
         return ExecutionResult(errors=[e], invalid=True)
 
